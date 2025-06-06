@@ -14,7 +14,6 @@ body {
 }
 
 .container {
-  /* max-width: 1200px; */
   width: 100%;
   margin: 0 auto;
   padding: 24px;
@@ -23,6 +22,15 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   width: 100%;
   box-sizing: border-box;
+  transition: filter 0.3s ease;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container.blurred {
+  filter: blur(4px);
+  pointer-events: none;
 }
 
 /* Your existing styles follow */
@@ -31,9 +39,10 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  margin-top: -20px;
+  background-color: #fff;
+  z-index: 10;
 }
-
-
 
 .title {
   font-size: 2rem;
@@ -51,17 +60,30 @@ body {
   transition: background-color 0.3s ease;
 }
 
-
 .add-new-button {
   padding: 6px 12px;         
   font-size: 0.875rem;       
   border-radius: 6px;        
+  width: 120px;              
+  max-width: 120px;          
+  box-sizing: border-box;    
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex: 1;
+}
+
+.grid::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
@@ -146,16 +168,6 @@ body {
   color: #1da1f2;
 }
 
-
-.add-new-button {
-  padding: 6px 12px;         
-  font-size: 0.875rem;       
-  border-radius: 6px;        
-  width: 100px;              
-  max-width: 100px;          
-  box-sizing: border-box;    
-}
-
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -187,8 +199,9 @@ body {
 
 .logo-container {
   text-align: center;
-  padding: 2rem 0;
-  margin-bottom: 1rem;
+  padding: 0;
+  background-color: #fff;
+  z-index: 10;
 }
 
 .logo-text {
